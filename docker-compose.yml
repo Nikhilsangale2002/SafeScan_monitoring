@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  monitoring:
+    build: .
+    container_name: safescan_monitoring
+    ports:
+      - "5001:5001"
+    environment:
+      - API_URL=http://safescan_apis:5000/api/health
+      - DB_URL=http://safescan_apis:5000/api/health
+      - REDIS_URL=http://safescan_apis:5000/api/health
+    volumes:
+      - ./logs:/app/logs
+    networks:
+      - safescan-network
+    restart: unless-stopped
+
+networks:
+  safescan-network:
+    external: true
