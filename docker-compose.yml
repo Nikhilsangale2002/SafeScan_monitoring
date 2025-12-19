@@ -5,7 +5,7 @@ services:
     build: .
     container_name: safescan_monitoring
     ports:
-      - "5001:5001"
+      - "5003:5001"
     environment:
       - API_URL=http://safescan_apis:5000/api/health
       - DB_URL=http://safescan_apis:5000/api/health
